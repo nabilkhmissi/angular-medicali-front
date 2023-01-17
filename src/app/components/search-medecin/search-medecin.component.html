@@ -1,0 +1,42 @@
+<app-header></app-header>
+
+<div class="container-fluid bg-primary search-bg p-0"
+    style="background-image: url('../../../assets/img/doctor-cover.jpg');">
+    <div>
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+                <h1 class="display-4 mb-4 text-white">Trouver des médecins</h1>
+                <h5 class="text-white fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos
+                    sit sed ipsum takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
+            </div>
+            <div class="mx-auto" style="width: 100%; max-width: 800px;">
+                <div class="input-group mb-3">
+
+                    <input type="text" class="form-control border-primary w-25" placeholder="Nom du médecin"
+                        [(ngModel)]="praticienName" [ngModelOptions]="{standalone: true}">
+
+                    <select class="form-select border-primary w-25" style="height: 60px;" [(ngModel)]="specialite"
+                        [ngModelOptions]="{standalone: true}">
+                        <option value="">Spécialité</option>
+                        <option *ngFor="let s of specialities" [value]="s.name">{{s.name}}</option>
+                    </select>
+
+                    <select class="form-select border-primary w-25" style="height: 60px;" [(ngModel)]="gouvernaurat"
+                        [ngModelOptions]="{standalone: true}">
+                        <option value="">Gouvernaurat</option>
+                        <option *ngFor="let g of gouvernaurats" [value]="g">{{g}}</option>
+                    </select>
+
+                    <button class="btn btn-dark border-0 w-20" (click)="search()"><i
+                            class="fas fa-search me-2"></i>Search</button>
+                </div>
+            </div>
+            <app-loading *ngIf="retrieved == false && clicked === true"></app-loading>
+            <h2 class="mt-4 py-3 text-white text-center" *ngIf="doctors.length == 0&&retrieved">Aucun médecin trouvé...
+            </h2>
+
+        </div>
+    </div>
+</div>
+<app-search-medecin-result [doctors]="doctors" *ngIf="doctors?.length != 0" >
+</app-search-medecin-result>

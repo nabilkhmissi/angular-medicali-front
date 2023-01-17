@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="doctor-card shadow" *ngFor="let l of laboratoires">
+        <div class="doctor-img">
+            <img src="/assets/img/lab.jpg" alt="">
+        </div>
+        <div class="doctor-details">
+            <h4>Laboratoire : {{l.firstName}} {{l.lastName}}</h4>
+            <hr>
+            <div class="doctor-address">
+                <div class="address-icon">
+                    <i class="fas fa-location-dot"></i>
+                </div>
+                <div class="address-details">
+                    <p class="address-item">{{l.address}}, {{l.postalCode}}, {{l.gouvernaurat}}</p>
+                </div>
+            </div>
+            <hr>
+            <p><i class="fas fa-phone"></i>{{l.phone}}</p>
+            <div class="button-div">
+                <button class="btn btn-success">Prendre rendez-vous</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>

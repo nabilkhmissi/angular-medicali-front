@@ -1,0 +1,117 @@
+<app-header></app-header>
+<div class="container mt-2">
+    <h1>Fiche client : dossier medical n° : {{dossier.id}}</h1>
+    <table class="table">
+
+        <h3 class="bg-primary">Les analyses :</h3>
+        <tr style="border-bottom: 2px solid grey;">
+
+            <td>
+                <div *ngFor="let m of dossier.analyse">
+                    <table class="table">
+                        <tr>
+                            <td>nom de l'analyse :</td>
+                            <td>{{m.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Etablissement :</td>
+                            <td>{{m.etablissement}}</td>
+                        </tr>
+                        <tr>
+                            <td>date :</td>
+                            <td>{{m.date | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <td>description :</td>
+                            <td>{{m.description}}</td>
+                        </tr>
+                     
+                
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <!-- les maladies -->
+        <h3 class="bg-primary">Les maladies :</h3>
+        <tr style="border-bottom: 2px solid grey;">
+
+            <td>
+                <div *ngFor="let m of dossier.maladies">
+                    <table class="table">
+                        <tr>
+                            <td>nom du maladie :</td>
+                            <td>{{m.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>date de détection :</td>
+                            <td>{{m.dateDetection | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <td>date de guérision :</td>
+                            <td>{{m.dateGuerir}}</td>
+                        </tr>
+                        <tr>
+                            <td>spécialité medicale du maladie :</td>
+                            <td>{{m.medicalSpeciality}}</td>
+                        </tr>
+                        <tr>
+                            <td>Est un antécédent familiale ? :</td>
+                            <td>{{m.familialAntecedent}}</td>
+                        </tr>
+                        <tr>
+                            <td>Maladie de longue terme ? :</td>
+                            <td>{{m.longTermMalady}}</td>
+                        </tr>
+                        <tr>
+                            <td>commentaire :</td>
+                            <td>{{m.description?m.description : '----'}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+
+        <!-- les mesures -->
+        <h3 class="bg-primary">Les mesures :</h3>
+        <tr style="border-bottom: 2px solid grey;">
+
+            <td>
+                <div *ngFor="let m of dossier.mesures">
+                    <table class="table">
+                        <tr>
+                            <td>nom du mesure :</td>
+                            <td>{{m.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>date du mesure :</td>
+                            <td>{{m.date | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <td>hauteur :</td>
+                            <td>{{m.hauteur}}</td>
+                        </tr>
+                        <tr>
+                            <td>poids :</td>
+                            <td>{{m.poids}}</td>
+                        </tr>
+                        <tr>
+                            <td>groupe sanguin :</td>
+                            <td>{{m.groupeSanguin}}</td>
+                        </tr>
+                        <tr>
+                            <td>pression sanguine :</td>
+                            <td>{{m.pressionSanguine}}</td>
+                        </tr>
+                        <tr>
+                            <td>commentaire :</td>
+                            <td>{{m.description?m.description : '----'}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

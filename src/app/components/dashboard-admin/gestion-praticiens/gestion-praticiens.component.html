@@ -1,0 +1,73 @@
+<div class="row ">
+    <div class="col-6 me-auto my-0">
+        <h1>Gestion des médecins</h1>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center py-3" *ngIf="loading">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<div *ngIf="loading == false">
+    <div class="row py-1">
+        <span>({{praticiens.length}} médecins)</span>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date de création</th>
+                <th scope="col">Spécialité</th>
+                <th scope="col">Code RPPS</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col">Etat</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let praticien of praticiens">
+                <td>{{praticien.id}}</td>
+                <td>{{praticien.firstName}} {{praticien.lastName}}</td>
+                <td>{{praticien.creationDate | date : 'dd/MM/yyyy'}}</td>
+                <td>{{praticien.speciality.name}}</td>
+                <td>{{praticien.rpps_code}}</td>
+                <td>{{praticien.phone}}</td>
+                <td>
+                    <i
+                        [ngClass]="praticien.valid? 'fa-solid text-success fa-check' : 'fa-solid text-danger fa-xmark'"></i>
+                </td>
+                <td>
+                    <button class="btn text-dark me-1">
+                        <i class="fas fa-pen"></i>
+                    </button>
+                   <!--  <button type="button" class="btn btn text-danger" data-bs-toggle="modal" data-bs-target="#modal"><i
+                            class="fas fa-trash"></i></button> -->
+                    <!-- modal -->
+                   <!--  <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Comfirmer suppression ?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-danger"
+                                        data-bs-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal"
+                                        (click)="delete(praticien.id)">Supprimer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- modal end -->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

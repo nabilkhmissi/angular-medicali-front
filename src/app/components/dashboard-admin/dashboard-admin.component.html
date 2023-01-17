@@ -1,0 +1,40 @@
+<app-header></app-header>
+
+<div class="container-fluid row py-3 m-0 bg-grey">
+    <!-- sidebar section -->
+    <div class="col-lg-2 col-md-3 col-sm-12">
+        <div class="sidebar">
+            <ul class="b-radius">
+                <li>
+                    <a routerLink="dashboard" routerLinkActive="active-route"><i class="fas fa-bell"></i>
+                        Notifications</a>
+                </li>
+                <li>
+                    <a routerLink="speciality" routerLinkActive="active-route"><i class="fas fa-sitemap"></i>
+                        Spécialités</a>
+                </li>
+                <li>
+                    <a routerLink="users" routerLinkActive="active-route"><i class="fas fa-users"></i> Utilisateurs</a>
+                </li>
+                <li>
+                    <a routerLink="praticiens" routerLinkActive="active-route"><i
+                            class="fa-sharp fa-solid fa-user-doctor"></i> Médecins</a>
+                </li>
+                <li>
+                    <a routerLink="laboratoires" routerLinkActive="active-route">
+                        <i class="fa-solid fa-flask"></i> Laboratoires</a>
+                </li>
+                <li>
+                    <a routerLink="pharmacies" routerLinkActive="active-route">
+                        <i class="fa-solid fa-mortar-pestle"></i> Pharmacies</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+    <!-- settings section -->
+    <div class="col-lg-10 col-md-9 col-sm-12 bg-white b-radius p-4">
+        <router-outlet></router-outlet>
+    </div>
+</div>

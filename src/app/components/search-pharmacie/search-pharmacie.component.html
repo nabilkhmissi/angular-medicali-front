@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div class="container-fluid bg-primary p-0 search-bg"
+    style="background-image:url('../../../assets/img/search-phar.jpg');">
+    <div class="">
+        <div class="container py-5">
+            <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+                <h1 class="display-4 mb-4 text-white">Trouver une pharmacie</h1>
+                <h5 class="text-white fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos
+                    sit sed ipsum takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
+            </div>
+            <div class="mx-auto" style="width: 100%; max-width: 800px;">
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control border-primary w-25" placeholder="Nom du pharmacie"
+                        [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+
+                    <select class="form-select border-primary w-25" style="height: 60px;" [(ngModel)]="gouvernaurat"
+                        [ngModelOptions]="{standalone: true}">
+                        <option value="">Gouvernaurat</option>
+                        <option *ngFor="let g of gouvernaurats" [value]="g">{{g}}</option>
+                    </select>
+                    <!-- form check -->
+                    <select class="form-select border-primary w-10" style="height: 60px;" [(ngModel)]="dayOrNight"
+                        [ngModelOptions]="{standalone: true}">
+
+                        <option value="">Jour/Nuit</option>
+                        <option value="jour">Jour</option>
+                        <option value="nuit">Nuit</option>
+                    </select>
+                    <!-- end form check -->
+
+
+                    <button class="btn btn-dark border-0 w-20" (click)="search()"><i
+                            class="fas fa-search me-2"></i>Search</button>
+                </div>
+            </div>
+            <app-loading *ngIf="retrieved == false && clicked === true"></app-loading>
+        </div>
+
+    </div>
+
+</div>
+<app-search-pharmacie-result [pharmacies]="pharmacies" *ngIf="pharmacies?.length != 0">
+</app-search-pharmacie-result>

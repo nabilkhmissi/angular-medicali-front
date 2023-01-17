@@ -1,0 +1,74 @@
+.search-medecin {
+    background-image: url("/assets/img/slide/slide-4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-end; */
+    height: 450px;
+    transition: .2s ease-in-out;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 450px;
+}
+
+.flex-start {
+    justify-content: flex-start;
+    padding-top: 17px;
+    height: 150px;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 50px 35px;
+    background-color: #9c59b61a;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    width: 70%;
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+
+}
+
+.search-input {
+    height: 48px;
+    display: flex;
+    flex-grow: 1;
+    margin-right: 12px;
+    outline: none;
+    color: grey;
+    font-size: 17px;
+    width: 200px;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #9b59b6;
+}
+
+.search-box button {
+    height: 48px;
+    background-color: #9b59b6;
+    border: none;
+    color: white;
+    padding: 0px 15px;
+    font-size: 16px;
+    transition: .2s;
+    border-radius: 5px;
+}
+
+.search-box button:hover {
+    background-color: #bb7ad4;
+    transform: scale(.99);
+}

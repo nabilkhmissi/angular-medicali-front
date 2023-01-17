@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-between mb-3">
+    <h4>Suivre vos analyses biologiques</h4>
+    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newMaladie" (click)="addAnalyse(f)">
+        Ajouter
+    </button>
+</div>
+
+<div class="alert alert-success p-2 mb-1" id="box" role="alert" *ngIf="message">
+    {{message}}
+</div>
+
+<div class="accordion mb-2" id="accordionFlushExample" *ngFor="let analyse of analyses;let i = index">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed d-flex" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapseOne'+i" aria-expanded="false" aria-controls="flush-collapseOne">
+
+                <span class="d-flex flex-grow-1">{{ analyse.name }}</span>
+                <span class="">{{ analyse.date | date : 'dd/MM/yyyy' }}</span>
+
+            </button>
+        </h2>
+        <div [attr.id]="'collapseOne'+i" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+                <p class="mb-1">department : <strong>{{ analyse.etablissement }}</strong></p>
+                <p class="mb-1">commentaires : <strong>{{ analyse.description ? analyse.description : 'Aucune
+                        description' }}</strong></p>
+                <div class="d-flex justify-content-end">
+                    <button class="btn mx-2" (click)="edit(analyse)" data-bs-toggle="modal"
+                        data-bs-target="#newMaladie"><i class="fas fa-pen"></i></button>
+                    <button class="btn text-danger" (click)="delete(analyse.id)"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- accordion -->
+
+<!-- modal -->
+<div class="modal fade" id="newMaladie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-microscope me-2"
+                        style="font-size:35px"></i>Ajouter une nouvelle analyse :</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger p-2 mb-1" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                </div>
+                <form #f="ngForm">
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Selectionner la spécialité medicale</label>
+                        <select id="inputState" class="form-control" [(ngModel)]="analyse.name"
+                            name="medicalSpeciality">
+
+                            <option value="NFS">
+                                NFS</option>
+                            <option value="Glycémie">
+                                Glycémie</option>
+                            <option value="Dermatologie (Peau)">Dermatologie (Peau)</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="col mb-3">
+                        <label class="col-form-label">Date :</label>
+                        <input type="date" class="form-control" [(ngModel)]="analyse.date" name="date">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="col-form-label">Etablissement :</label>
+                        <input type="text" class="form-control" [(ngModel)]="analyse.etablissement"
+                            name="etablissement">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="col-form-label">Joindre le document de l'analyse :</label>
+                        <input type="file" class="form-control" (change)="onUploadFile($event)"
+                            name="etablissement">
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Autres commentaire :</label>
+                        <input type="text-area" class="form-control" [(ngModel)]="analyse.description"
+                            name="description">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="dismissBtn" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                    id="dismissBtn">Annuler</button>
+                <button type="submit" (click)="save()" class="btn btn-outline-dark">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->

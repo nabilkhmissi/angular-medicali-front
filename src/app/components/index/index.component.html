@@ -1,0 +1,344 @@
+<app-header></app-header>
+<!-- Hero Start -->
+<div class="container-fluid bg-primary py-5" style="background: url(assets/img/hero-cover/hero10.jpg) top right no-repeat;background-size: cover;
+background-size: cover;">
+  <div class="container py-5">
+    <div class="row justify-content-start">
+      <div class="col-lg-8 text-center text-lg-start">
+        <!--<h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Medinova</h5>-->
+        <h1 class="display-1 text-white mb-md-4">Vous cherchez un praticien en tunisie ?</h1>
+        <div class="pt-2">
+          <a routerLink="search-medecin" class="btn btn-outline-light rounded-pill py-md-3 px-md-3 mx-2"><i
+              class="fas fa-search me-2"></i>Médecin</a>
+          <a routerLink="search-laboratoire" class="btn btn-outline-light rounded-pill py-md-3 px-md-3 mx-2"><i
+              class="fas fa-search me-2"></i>Laboratoire</a>
+          <a routerLink="search-pharmacie" class="btn btn-outline-light rounded-pill py-md-3 px-md-3 mx-2"><i
+              class="fas fa-search me-2"></i>Pharmacie</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Hero End -->
+
+<!-- ======= Cta Section ======= -->
+
+<div class="container-fluid bg-dark py-4" *ngIf="!isUserLoggedIn">
+  <div class="text-center py-3">
+    <h3 class="mb-4 text-white">Vous êtes médecin ou bien professionnel de santé ?</h3>
+    <a class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2" routerLink="register-praticien">Nous
+      rejoindre</a>
+  </div>
+</div>
+
+<!-- End Cta Section -->
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+  <div class="container">
+    <div class="row gx-5">
+      <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+        <div class="position-relative h-100">
+          <img class="position-absolute w-100 h-100 rounded" src="assets/img/about.jpg" style="object-fit: cover;">
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="mb-4">
+          <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Qui somme nous ?</h5>
+          <h1 class="display-4">Toutes vos besoin en santé en un seul endroit</h1>
+        </div>
+        <p>Medicio est à votre service gratuitement pour vous aider à trouver un médecin, un dentiste,
+          un laboratoire d'analyses ou la pharmacie la plus proche de chez vous
+          et de prendre le rendez-vous qui vous convient soit par téléphone soit en ligne depuis notre site web.
+        <br> Ainsi, Medicali vous permet également de créer et gérer votre dossier medical pour le meilleur suivie de votre santé</p>
+        <div class="row g-3 pt-3">
+          <div class="col-sm-3 col-6">
+            <div class="bg-light text-center rounded-circle py-4">
+              <i class="fa fa-3x fa-user-md text-primary mb-3"></i>
+              <h6 class="mb-0">Rechercher<small class="d-block text-primary">Praticiens</small></h6>
+            </div>
+          </div>
+          <div class="col-sm-3 col-6">
+            <div class="bg-light text-center rounded-circle py-4">
+              <i class="fa fa-3x fa-notes-medical text-primary mb-3"></i>
+              <h6 class="mb-0">Dossier médical<small class="d-block text-primary">en ligne</small></h6>
+            </div>
+          </div>
+          <div class="col-sm-3 col-6">
+            <div class="bg-light text-center rounded-circle py-4">
+              <i class="fa-regular fa-3x fa-calendar-days text-primary mb-3"></i>
+              <h6 class="mb-0">Rendez-vous<small class="d-block text-primary">en simple click</small></h6>
+            </div>
+          </div>
+          <div class="col-sm-3 col-6">
+            <div class="bg-light text-center rounded-circle py-4">
+              <i class="fa fa-3x fa-vial text-primary mb-3"></i>
+              <h6 class="mb-0">Rechercher<small class="d-block text-primary">laboratoires</small></h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About End -->
+
+<!-- Services Start -->
+<div class="container-fluid py-5">
+  <div class="container">
+    <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+      <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Services</h5>
+      <h1 class="display-4">Excellent Medical Services</h1>
+    </div>
+    <div class="row g-5">
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-user-md text-white"></i>
+          </div>
+          <h4 class="mb-3">Emergency Care</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-procedures text-white"></i>
+          </div>
+          <h4 class="mb-3">Operation & Surgery</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-stethoscope text-white"></i>
+          </div>
+          <h4 class="mb-3">Outdoor Checkup</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-ambulance text-white"></i>
+          </div>
+          <h4 class="mb-3">Ambulance Service</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-pills text-white"></i>
+          </div>
+          <h4 class="mb-3">Medicine & Pharmacy</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+          <div class="service-icon mb-4">
+            <i class="fa fa-2x fa-microscope text-white"></i>
+          </div>
+          <h4 class="mb-3">Blood Testing</h4>
+          <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo
+            elitr dolor amet sit</p>
+          <a class="btn btn-lg btn-primary rounded-pill" href="">
+            <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Services End -->
+
+<!-- Team Start -->
+<!-- <div class="container-fluid py-5">
+  <div class="container">
+    <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+      <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Our Doctors</h5>
+      <h1 class="display-4">Qualified Healthcare Professionals</h1>
+    </div>
+    <div class="owl-carousel team-carousel position-relative">
+      <div class="team-item">
+        <div class="row g-0 bg-light rounded overflow-hidden">
+          <div class="col-12 col-sm-5 h-100">
+            <img class="img-fluid h-100" src="assets/img/team-1.jpg" style="object-fit: cover;">
+          </div>
+          <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+            <div class="mt-auto p-4">
+              <h3>Doctor Name</h3>
+              <h6 class="fw-normal fst-italic text-primary mb-4">Cardiology Specialist</h6>
+              <p class="m-0">Dolor lorem eos dolor duo eirmod sea. Dolor sit magna rebum clita rebum
+                dolor</p>
+            </div>
+            <div class="d-flex mt-auto border-top p-4">
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-item">
+        <div class="row g-0 bg-light rounded overflow-hidden">
+          <div class="col-12 col-sm-5 h-100">
+            <img class="img-fluid h-100" src="assets/img/team-2.jpg" style="object-fit: cover;">
+          </div>
+          <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+            <div class="mt-auto p-4">
+              <h3>Doctor Name</h3>
+              <h6 class="fw-normal fst-italic text-primary mb-4">Cardiology Specialist</h6>
+              <p class="m-0">Dolor lorem eos dolor duo eirmod sea. Dolor sit magna rebum clita rebum
+                dolor</p>
+            </div>
+            <div class="d-flex mt-auto border-top p-4">
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="team-item">
+        <div class="row g-0 bg-light rounded overflow-hidden">
+          <div class="col-12 col-sm-5 h-100">
+            <img class="img-fluid h-100" src="assets/img/team-3.jpg" style="object-fit: cover;">
+          </div>
+          <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+            <div class="mt-auto p-4">
+              <h3>Doctor Name</h3>
+              <h6 class="fw-normal fst-italic text-primary mb-4">Cardiology Specialist</h6>
+              <p class="m-0">Dolor lorem eos dolor duo eirmod sea. Dolor sit magna rebum clita rebum
+                dolor</p>
+            </div>
+            <div class="d-flex mt-auto border-top p-4">
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-twitter"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle me-3" href="#"><i
+                  class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-lg btn-primary btn-lg-square rounded-circle" href="#"><i
+                  class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Team End -->
+
+<!-- Contact Start -->
+<div class="container-fluid pt-5 mb-5">
+  <div class="container">
+    <div class="text-center mx-auto mb-5" style="max-width: 500px;">
+      <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Avez-vous des Questions?</h5>
+      <h1 class="display-4">Contacter nous</h1>
+    </div>
+    <div class="row g-5 mb-5">
+      <div class="col-lg-4">
+        <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+          style="height: 200px;">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+            <i class="fa fa-2x fa-location-arrow text-white" style="transform: rotate(15deg);"></i>
+          </div>
+          <h6 class="mb-0">123 Street, New York, USA</h6>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+          style="height: 200px;">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+            <i class="fa fa-2x fa-phone text-white" style="transform: rotate(15deg);"></i>
+          </div>
+          <h6 class="mb-0">+012 345 6789</h6>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+          style="height: 200px;">
+          <div class="d-flex align-items-center justify-content-center bg-primary rounded-circle mb-4"
+            style="width: 100px; height: 70px; transform: rotate(-15deg);">
+            <i class="fa fa-2x fa-envelope-open text-white" style="transform: rotate(15deg);"></i>
+          </div>
+          <h6 class="mb-0">info@example.com</h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" style="height: 500px;">
+        <div class="position-relative h-100">
+          <iframe class="position-relative w-100 h-100"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+            frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
+      <div class="col-lg-8">
+        <div class="bg-white rounded p-5 m-5 mb-0">
+          <form>
+            <div class="row g-3">
+              <div class="col-12 col-sm-6">
+                <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+              </div>
+              <div class="col-12 col-sm-6">
+                <input type="email" class="form-control bg-light border-0" placeholder="Your Email"
+                  style="height: 55px;">
+              </div>
+              <div class="col-12">
+                <input type="text" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
+              </div>
+              <div class="col-12">
+                <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact End -->
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

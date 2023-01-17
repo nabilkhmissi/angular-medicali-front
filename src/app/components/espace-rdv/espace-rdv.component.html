@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container py-3">
+  <h1>Mes rendez-vous</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+
+        <th scope="col"><i class="fas fa-calendar-days"></i>Date</th>
+        <th scope="col"><i class="fas fa-clock"></i>Heure</th>
+        <th scope="col"><i class="fas fa-user-doctor"></i>Médecin</th>
+        <th scope="col"><i class="fa-solid fa-sitemap"></i>Spécialité</th>
+        <th scope="col"><i class="fa-solid fa-exclamation"></i>Soucis</th>
+        <th scope="col"><i class="fa-solid fa-info"></i>etat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rdv of rdvs">
+
+        <td>{{ rdv.jourRDV | date:'dd-MM-yyyy' }}</td>
+        <td>{{ rdv.time }}</td>
+        <td>{{ rdv.doctor.firstName }} {{ rdv.doctor.lastName }}</td>
+        <td>{{ rdv.doctor.speciality.name }}</td>
+        <td>{{ rdv.soucis }}</td>
+        <td>{{ rdv.etatRDV }}</td>
+        <td>
+          <button class="btn text-success mx-1"><i class="fas fa-edit"></i></button>
+          <button class="btn text-danger"(click)="annulerRDV(rdv.id)"><i class="fas fa-trash"></i></button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>

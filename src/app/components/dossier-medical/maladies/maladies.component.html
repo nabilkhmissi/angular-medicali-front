@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-between mb-3">
+  <h4>Suivie des maladies</h4>
+  <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newMaladie" (click)="addMaladie(f)">
+    Ajouter
+  </button>
+</div>
+<div class="alert alert-success p-2 my-3" id="box" role="alert" *ngIf="message">
+  {{message}}
+</div>
+<div class="accordion" id="accordionExample" *ngFor="let m of maladies; let i = index">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne'+i"
+        aria-expanded="true" aria-controls="collapseOne">
+        <strong>{{ m.name }}</strong> ___ {{ m.medicalSpeciality }}
+      </button>
+    </h2>
+    <div [attr.id]="'collapseOne'+i" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+      data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <!-- <div class="d-flex flex-column"></div> -->
+        <p class="mb-1">Détecteé en : <strong>{{ m.dateDetection | date : 'MM/yyyy' }}</strong></p>
+        <p class="mb-1">Guérie en : <strong>{{ m.dateGuerir | date : 'MM/yyyy' }}</strong></p>
+        <p class="mb-1">Est un antécédent familial ? <strong>{{ m.familialAntecedent ? 'OUI' : 'NON' }}</strong></p>
+        <p class="mb-1">Est une maladie de langue durée ? <strong>{{ m.longTermMalady ? 'OUI' : 'NON'}}</strong></p>
+        <p class="mb-1">Description : <strong>{{ m.description }}</strong></p>
+        <div class="d-flex justify-content-end">
+          <button class="btn mx-2" (click)="editMalady(m)" data-bs-toggle="modal" data-bs-target="#newMaladie"><i
+              class="fas fa-pen"></i></button>
+          <button class="btn text-danger" (click)="delete(m.id)"><i class="fas fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="newMaladie" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter une nouvelle maladie :</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="alert alert-danger p-2 mb-1" role="alert" *ngFor="let error of errors">
+          {{error}}
+        </div>
+        <form #f="ngForm">
+          <div class="mb-3">
+            <label class="col-form-label">Selectionner la spécialité medicale</label>
+            <select id="inputState" class="form-control" [(ngModel)]="newMaladie.medicalSpeciality"
+              name="medicalSpeciality">
+              <option selected>Choisir...</option>
+              <option value="Cardiologie & Vasculaire (Coeur & Vaisseaux)">
+                Cardiologie & Vasculaire (Coeur & Vaisseaux)</option>
+              <option value="Chirurgie & médecine esthétique (Visage & corps)">
+                Chirurgie & médecine esthétique (Visage & corps)</option>
+              <option value="Dermatologie (Peau)">Dermatologie (Peau)</option>
+              <option value="Endocrinologie & diabétologie (Diabète & autres)">
+                Endocrinologie & diabétologie (Diabète & autres)</option>
+
+              <option value="Gastro-entérologie (Appareil digestif)">Gastro-entérologie
+                (Appareil digestif)</option>
+              <option value="Gynécologie & Obstétrique">Gynécologie & Obstétrique
+              </option>
+              <option value="Hématologie (sang)">Hématologie (sang)</option>
+              <option value="Hépatologie (foie)">Hépatologie (foie)</option>
+              <option value="Médecine Dentaire (Dents)">Médecine Dentaire (Dents)</option>
+              <option value="Médecine Générale">Médecine Générale</option>
+              <option value="Neurologie (Cerveau et Nerfs)">Neurologie (Cerveau et Nerfs)
+              </option>
+              <option value="Néphrologie  (Reins)">Néphrologie (Reins)</option>
+              <option value="Ophtalmologie (Yeux)">Ophtalmologie (Yeux)</option>
+              <option value="Orthopédie & Traumatologie (Os)">Orthopédie &
+                Traumatologie (Os)</option>
+              <option value="Oto-Rhino-Laryngologie (ORL) (Oreille nez gorge)">
+                Oto-Rhino-Laryngologie (ORL) (Oreille nez gorge)</option>
+              <option value="Pneumologie (Poumons)">Pneumologie (Poumons)</option>
+              <option value="Psychiatrie (Trouble mentaux)">Psychiatrie (Trouble mentaux)
+              </option>
+              <option value="Pédiatrie (Enfant)">Pédiatrie (Enfant)</option>
+              <option value="Rhumatologie (articulations) ">Rhumatologie (articulations)
+              </option>
+              <option value="Urologie (appareil urinaire) ">Urologie (appareil urinaire)
+              </option>
+              <option value="Cancérologie (cancer)">Cancérologie (cancer)</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Nom du maladie :</label>
+            <input type="text" class="form-control" [(ngModel)]="newMaladie.name" name="name">
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" [(ngModel)]="newMaladie.familialAntecedent"
+              name="isFamilialAntecedent">
+            <label class="form-check-label" for="defaultCheck1">Antécédent familial ?
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" [(ngModel)]="newMaladie.longTermMalady"
+              name="isLongTermMalady">
+            <label class="form-check-label" for="defaultCheck1">
+              Maladie langue durée ?
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-6 mb-3">
+              <label class="col-form-label">Détectée en :</label>
+              <input type="date" class="form-control" [(ngModel)]="newMaladie.dateDetection" name="dateDetection">
+            </div>
+            <div class="col-6 mb-3">
+              <label class="col-form-label">Guérie en :</label>
+              <input type="date" class="form-control" [(ngModel)]="newMaladie.dateGuerir" name="dateGuerir">
+            </div>
+
+          </div>
+
+          <div class="mb-3">
+            <label class="col-form-label">Autres commentaire :</label>
+            <input type="text-area" class="form-control" [(ngModel)]="newMaladie.description" name="description">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="dismissBtn" class="btn btn-outline-danger" data-bs-dismiss="modal">Annuler</button>
+        <button type="submit" (click)="save()" class="btn btn-outline-dark">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal end -->

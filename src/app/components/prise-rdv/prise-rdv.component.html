@@ -1,0 +1,92 @@
+<app-header></app-header>
+<!--  -->
+<div class="container-fluid bg-grey py-5">
+    <div class="row justify-content-center py-3">
+        <div class="col-lg-6">
+            <div class="bg-white b-radius p-5">
+                    <div class="alert alert-danger p-2 mb-1" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                </div>
+                <div class="alert alert-success p-2 mb-1" role="alert" *ngIf="message">
+                    {{message}}
+                </div>
+                <h1 class="mb-4">Prendre un rendez-vous</h1>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="" class="text-dark">Nom du patient</label>
+                            <input type="text" class="form-control bg-light" style="height: 55px;" readonly disabled
+                                [(ngModel)]="patient.firstName" name="patientName">
+                        </div>
+
+                        <div class="col-6">
+                            <label for="" class="text-dark">Médecin</label>
+                            <input type="text" class="form-control bg-light" style="height: 55px;"
+                                [(ngModel)]="medecin.firstName" name="firstName" readonly disabled>
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="text-dark">Spécialité</label>
+                            <input type="text" class="form-control bg-light" style="height: 55px;"
+                                [(ngModel)]="medecin.speciality.name" name="speciality" readonly disabled>
+                        </div>
+                        <div class="col-6">
+                            <label for="" class="text-dark">Date du rendez-vous</label>
+                            <input type="date" class="form-control bg-light" style="height: 55px;"
+                                [(ngModel)]="rdv.jourRDV" name="jourRDV" #jourRDV='ngModel' required minLength="5">
+                            <!-- validation du prénom -->
+                            <div *ngIf="jourRDV.invalid && (jourRDV.dirty || jourRDV.touched)" class="text-danger mt-1">
+
+                                <div *ngIf="jourRDV.errors?.['required']">
+                                    veuillez selectionner le jour de rendez-vous
+                                </div>
+                            </div>
+                            <!-- fin validation -->
+                        </div>
+
+                        <div class="col-6">
+                            <label for="" class="text-dark">Heure</label>
+                            <select class="form-select border-1" style="height: 55px;" [(ngModel)]="rdv.time"
+                                [ngModelOptions]="{standalone: true}" #time="ngModel" required>
+                                <option *ngFor="let t of times" [value]="t">{{t}}</option>
+                            </select>
+                            <!-- validation du heure de rdv -->
+                            <div *ngIf="time.invalid && (time.dirty || time.touched)" class="text-danger mt-1">
+
+                                <div *ngIf="time.errors?.['required']">
+                                    veuillez selectionner l'heure du rendez-vous
+                                </div>
+                            </div>
+                            <!-- fin validation -->
+                        </div>
+
+
+                        <div class="col-12">
+                            <label for="" class="text-dark">Quel est votre souci de santé ?</label>
+                            <input type="text" class="form-control bg-light" style="height: 55px;"
+                                [(ngModel)]="rdv.soucis" name="soucis" #soucis="ngModel" required minlength="10">
+                            <!-- validation du soucis du rdv -->
+                            <div *ngIf="soucis.invalid && (soucis.dirty || soucis.touched)" class="text-danger mt-1">
+
+                                <div *ngIf="soucis.errors?.['required']">
+                                    veuillez indiquer votre soucis par un petit paragraphe !
+                                </div>
+
+                                <div *ngIf="soucis.errors?.['minLength']">
+                                    ce paragraphe doit contenir au moin 10 caractères !
+                                </div>
+                            </div>
+                            <!-- fin validation -->
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3 me-3 d-flex flex-row justify-content-center" [disabled]="jourRDV.invalid || soucis.invalid || time.invalid"><span
+                                    class="me-2" (click)="save()">Ajouter Rendez-vous</span>
+
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

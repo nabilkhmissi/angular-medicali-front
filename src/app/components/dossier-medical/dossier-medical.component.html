@@ -1,0 +1,178 @@
+<app-header></app-header>
+
+<!-- new division -->
+<div class="container-fluid bg-grey p-4">
+
+    <div class="row">
+        <!-- collapsable sidebar -->
+        <div class="navbar-expand-md col-lg-2 col-md-3 col-sm-12 mr-lg-2">
+            <button class="navbar-toggler btn mb-3 p-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#medical-items" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="medical-items">
+                <!-- sidebar -->
+                <div class="">
+                    <div class="sidebar b-radius">
+                        <ul>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="resume">
+                                    <img src="assets/icons/c.png" alt="">
+                                    <span>
+                                        Résumé
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="maladies">
+                                    <img src="assets/icons/a.png" alt="">
+                                    <span>
+                                        Maladies
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="groupes-sanguins">
+                                    <img src="assets/icons/g.png" alt="">
+                                    <span>
+                                        Groupe sanguin & mesures
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="analyses">
+                                    <img src="assets/icons/b.png" alt="">
+                                    <span>
+                                        Analyses
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="chirugies">
+                                    <img src="assets/icons/h.png" alt="">
+                                    <span>
+                                        Chirugies
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="traitements">
+                                    <img src="assets/icons/i.png" alt="">
+                                    <span>
+                                        Traitements & médicaments
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="medecins-traitants">
+                                    <img src="assets/icons/j.png" alt="">
+                                    <span>
+                                        Médecins traitants
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="vaccinations">
+                                    <img src="assets/icons/k.png" alt="">
+                                    <span>
+                                        Vaccinations
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="examens-radiologues">
+                                    <img src="assets/icons/z.png" alt="">
+                                    <span>
+                                        Examens radiologiques
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="habitudes">
+                                    <img src="assets/icons/e.png" alt="">
+                                    <span>
+                                        Habitudes
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="allergies">
+                                    <img src="assets/icons/f.png" alt="">
+                                    <span>
+                                        Allergies & Intolérances
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLinkActive="active-route" routerLink="antecedants-familiaux">
+                                    <img src="assets/icons/l.png" alt="">
+                                    <span>
+                                        Antécedants familiaux
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- end sidebar -->
+            </div>
+        </div>
+        <!-- end collapsable menu -->
+
+
+        <!-- settings section -->
+        <div class="col-lg-8 col-md-8 bg-white b-radius p-4">
+            <router-outlet></router-outlet>
+        </div>
+
+
+        <!-- humanBody section -->
+        <div class="col-lg-2 d-none d-lg-block">
+
+            <div class="infos text-dark bg-white b-radius" style="overflow: hidden;">
+                <!-- header -->
+                <div class="mes-head d-flex justify-content-center py-3">
+                    <div class="text-center d-flex flex-column">
+                        <i class="fa-solid fa-ruler"></i>
+                        <span>{{ height ? height + 'Cm' : 'NONE' }} </span>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                    <!-- middle -->
+                    <div class="d-flex justify-content-center flex-column text-center flex-fill" style="width: 30%;">
+                        <div class="text-center d-flex flex-column">
+                            <i class="fa-solid fa-droplet"></i>
+                            <span>{{ groupe_sanguin? groupe_sanguin : 'NONE'}}</span>
+                        </div>
+                    </div>
+                    <!-- body img -->
+                    <div class="d-flex justify-content-center flex-column flex-fill aligh-items-center"
+                        style="width: 40%;">
+                        <img src="../../../assets/img/humanbody21.png" alt="">
+                    </div>
+                    <div class="d-flex justify-content-center flex-column text-center flex-fill" style="width: 30%;">
+                        <div class="text-center d-flex flex-column">
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            <span>{{ pression ? pression + 'MmHG' : 'NONE' }}</span>
+                           
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
+                <div class="mes-btm d-flex justify-content-center py-3">
+                    <div class="text-center d-flex flex-column">
+                        <i class="fa-solid fa-weight-scale"></i>
+                        <span>{{ poids? poids + 'Kg' : 'NONE' }}</span>
+                    </div>
+                </div>
+                <div></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

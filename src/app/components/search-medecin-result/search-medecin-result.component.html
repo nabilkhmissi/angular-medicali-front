@@ -1,0 +1,47 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="doctor-card shadow" *ngFor="let d of doctors">
+                <div class="doctor-img">
+                    <img [src]="d.avatarUrl" alt="">
+                </div>
+                <div class="doctor-details">
+                    <div class="row">
+                        <div class="col">
+                            <h4>Dr. {{d.firstName}} {{d.lastName}}</h4>
+                            <p class="doctor-speciality">{{d.speciality.name}}</p>
+                        </div>
+                        <div class="col">
+                            <div class="button-div">
+                                <button class="btn btn-outline-dark rounded-pill py-2"
+                                    (click)="goToPriseRDV(d.id)">Prendre rendez-vous</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <div class="doctor-address py-2">
+                        <div class="address-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="address-details">
+                            <p class="address-item">{{d.address}}, {{d.gouvernaurat}}, {{d.postalCode}}, Tunisie</p>
+
+                        </div>
+                    </div>
+                    <hr>
+                    <p><i class="fas fa-phone"></i>{{d.phone}}</p>
+                    <p><i class="fas fa-dollar-sign"></i>Prix consultation : {{ d.prix_consultation }}</p>
+
+
+                </div>
+
+            </div>
+        </div>
+      <!--   <div class="col-lg-6">
+       <div id="map"></div>
+        </div> -->
+    </div>
+
+</div>

@@ -1,0 +1,121 @@
+<app-header></app-header>
+
+<div class="container-fluid bg-grey py-2 ">
+    <div class="row justify-content-center py-4">
+        <div class="col-lg-8">
+            <div class="bg-white b-radius p-5">
+                <div class="alert alert-danger p-2 mb-1" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                </div>
+                <div class="alert alert-success p-2 mb-1" role="alert" *ngIf="message">
+                    {{message}}
+                </div>
+                <h1 class="mb-4">S'inscrire</h1>
+                <hr>
+
+                <form class="row g-3">
+                    <!-- form check -->
+                    <div class="col-12">
+                        <div class="form-check form-check-inline">
+                            <h5 class="p-0 m-0">Je suis : </h5>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" value="doctor" [(ngModel)]="praticienType"
+                                [ngModelOptions]="{standalone: true}">
+                            <label class="form-check-label">Professionnel de santé</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" value="laboratoire" [(ngModel)]="praticienType"
+                                [ngModelOptions]="{standalone: true}">
+                            <label class="form-check-label">Laboratoire d'analyses</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" value="pharmacie" [(ngModel)]="praticienType"
+                                [ngModelOptions]="{standalone: true}">
+                            <label class="form-check-label">Pharmacie</label>
+                        </div>
+                    </div>
+                    <!-- end form check -->
+
+                    <div class="col-md-6">
+                        <label class="form-label">Nom</label>
+                        <input type="text" class="form-control h-55" [(ngModel)]="firstName"
+                            [ngModelOptions]="{standalone: true}">
+                        
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Prénom</label>
+                        <input type="text" class="form-control h-55" [(ngModel)]="lastName"
+                            [ngModelOptions]="{standalone: true}">
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Identifiant</label>
+                        <input type="email" class="form-control h-55" [(ngModel)]="username"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control h-55" [(ngModel)]="password"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Addresse</label>
+                        <input type="text" class="form-control h-55" [(ngModel)]="address"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Gouvernaurat</label>
+                        <select class="form-select h-55" [(ngModel)]="gouvernaurat"
+                            [ngModelOptions]="{standalone: true}">
+                            <!-- <option selected>Choose...</option> -->
+                            <option *ngFor="let g of gouvernaurats" [ngValue]="g">{{g}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="inputZip" class="form-label">Code postal</label>
+                        <input type="text" class="form-control h-55" id="inputZip" [(ngModel)]="postalCode"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Identifiant RPPS Unique</label>
+                        <input type="email" class="form-control h-55" id="inputEmail4" [(ngModel)]="rpps_code"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-6" *ngIf="praticienType==='doctor'">
+                        <label for="inputPassword4" class="form-label">Spécialité</label>
+                        <select id="inputState" class="form-select h-55" [(ngModel)]="speciality"
+                            [ngModelOptions]="{standalone: true}">
+                            <!-- <option selected>{{specialities[0]}}</option> -->
+                            <option *ngFor="let s of specialities" [ngValue]="s">{{s.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6" *ngIf="praticienType==='doctor'" s>
+                        <label for="inputZip" class="form-label">Prix de consultation</label>
+                        <input type="number" class="form-control h-55" id="inputZip" [(ngModel)]="prix_consultation"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-3" *ngIf="praticienType==='pharmacie'">
+                        <label for="inputPassword4" class="form-label">Jour/Nuit</label>
+                        <select id="inputState" class="form-select h-55" [(ngModel)]="dayOrNight"
+                            [ngModelOptions]="{standalone: true}">
+                            <option value="day">Jour</option>
+                            <option value="night">Nuit</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="col-12">
+                        <button type="button" (click)="register()" class="btn btn-primary h-55 px-5">Sign in</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-between mb-3">
+    <h4>Suivez vos mesures</h4>
+    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#addMesures" (click)="addMesures(f)">
+        Ajouter
+    </button>
+</div>
+<!-- <p>Cliquer sur l’icône d'une mesure pour consulter et gérer son historique</p> -->
+<div class="alert alert-success p-2 mb-1" id="box" role="alert" *ngIf="message">
+    {{message}}
+</div>
+<div class="row">
+
+
+    <div class="col-12 col-md-2 col-sm-12">
+        <img src="../../../assets/img/humanbody21.png" alt="" style="width: 20vh;">
+    </div>
+
+    <div class="col-12 col-md-10 col-sm-10 icons">
+
+        <div class="accordion mb-2" id="accordionFlushExample" *ngFor="let mesure of mesures;let i = index">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <a class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#collapseOne'+i" aria-expanded="false"
+                        aria-controls="flush-collapseOne">
+
+                        <div class="col-9">{{ mesure.name }}</div>
+                        <div class="col-3">{{ mesure.date | date:'dd/MM/yyyy' }}</div>
+
+                    </a>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                    data-bs-parent="#accordionFlushExample" [attr.id]="'collapseOne'+i">
+                    <div class="accordion-body">
+                        <div class="col-12 py-1"><i class="mesureIcons fa-solid fa-arrows-up-down"></i> Hauteur : <strong>{{
+                                mesure.hauteur ? mesure.hauteur + 'CM' : 'Aucun' }}
+                            </strong></div>
+                        <div class="col-12 py-1"><i class="mesureIcons fa-solid fa-heart-pulse"></i> Pression sanguine :
+                            <strong>{{ mesure.pressionSanguine ? mesure.pressionSanguine + 'MmHG' : 'Aucun' }}
+                            </strong>
+                        </div>
+                        <div class="col-12 py-1"><i class="mesureIcons fa-solid fa-droplet"></i> Groupe Sanguin :
+                            <strong>{{ mesure.groupeSanguin ? mesure.groupeSanguin : 'Aucun' }}</strong>
+                        </div>
+                        <div class="col-12 py-1"><i class="mesureIcons fa-solid fa-weight-scale"></i> Poids : <strong>{{
+                                mesure.poids ? mesure.poids + 'Kg' : 'Aucun' }}
+                            </strong>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn mx-2" (click)="edit(mesure)" data-bs-toggle="modal"
+                                data-bs-target="#addMesures"><i class="fas fa-pen"></i></button>
+                            <button class="btn text-danger" (click)="delete(mesure.id)"><i
+                                    class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- modal -->
+<div class="modal fade" id="addMesures" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa-solid fa-microscope me-2"
+                        style="font-size:35px"></i>Ajouter des nouvelles mesures :</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger p-2 mb-1" role="alert" *ngFor="let error of errors">
+                    {{error}}
+                </div>
+                <form #f="ngForm">
+
+                    <div class="mb-3">
+                        <label class="col-form-label">Nom de mesure :</label>
+                        <input type="text" class="form-control" [(ngModel)]="mesure.name" name="name">
+                    </div>
+                    <div class="col mb-3" *ngIf="mesure.id == null">
+                        <label class="col-form-label">Date :</label>
+                        <input type="date" class="form-control" [(ngModel)]="mesure.date" name="date">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="col-form-label">Hauteur :</label>
+                        <input type="text" class="form-control" [(ngModel)]="mesure.hauteur" name="hauteur">
+                    </div>
+                    <div class="col mb-3">
+                        <label class="col-form-label">Poids :</label>
+                        <input type="text" class="form-control" [(ngModel)]="mesure.poids" name="poids">
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label class="col-form-label">Pression sanguine :</label>
+                            <input type="text" class="form-control" [(ngModel)]="mesure.pressionSanguine"
+                                name="pressionSanguine">
+                        </div>
+                        <div class="col mb-3">
+                            <label class="col-form-label">Groupe Sanguin :</label>
+                            <select id="inputState" class="form-control" [(ngModel)]="mesure.groupeSanguin"
+                                name="medicalSpeciality">
+                                <option value="O-">O-</option>
+                                <option value="O+">O+</option>
+                                <option value="A-">A-</option>
+                                <option value="A+">A+</option>
+                                <option value="B-">B-</option>
+                                <option value="B+">B+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="AB+">AB+</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="col-form-label">commentaires :</label>
+                        <input type="text-area" class="form-control" [(ngModel)]="mesure.description"
+                            name="description">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="dismissBtn" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                    id="dismissBtn">Annuler</button>
+                <button type="submit" (click)="save()" class="btn btn-outline-dark">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->
